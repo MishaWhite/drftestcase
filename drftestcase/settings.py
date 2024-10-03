@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'kittenshow.apps.KittenshowConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
