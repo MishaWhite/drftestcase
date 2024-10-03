@@ -30,6 +30,7 @@ class Kitten(models.Model):
 class Rating(models.Model):
     kitten = models.ForeignKey(Kitten, verbose_name='Котёнок', on_delete=models.CASCADE)
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
+    #TODO: Добавить choices
     value = models.IntegerField('Оценка')
 
     class Meta:
