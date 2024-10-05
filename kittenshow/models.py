@@ -27,12 +27,17 @@ class Kitten(models.Model):
     color = models.ForeignKey(Color, verbose_name='Цвет/окрас', on_delete=models.PROTECT)
     age = models.IntegerField('Возраст, мес.')
     description = models.TextField('Описание')
-    user_add = models.ForeignKey(User, on_delete=models.PROTECT, editable=False)
+    user_add = models.ForeignKey(User, on_delete=models.PROTECT)
     rate_count = models.IntegerField('Оценок', null=True, editable=False)
     rate = models.FloatField('Средняя оценка', null=True, editable=False)
 
     def __str__(self):
-        return ' '.join([self.name, self.breed, self.age])
+        return ' '.join([self.name,
+                         self.breed.name,
+                         str(self.age), 'мес.',
+                         f'({self.user_add.first_name} {self.user_add.last_name})'
+                         ])
+
 
     class Meta:
         unique_together = ('name', 'age', 'breed', 'user_add')
